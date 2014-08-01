@@ -1,0 +1,36 @@
+<p>
+  <strong>Name:</strong>
+  <%= @author.name %>
+ 
+<p>
+  <strong>Country:</strong>
+  <%= @author.country %>
+
+
+<h2>Books</h2>
+<% @author.books.each do |book| %>
+    <strong>Title:</strong>
+    <%= book.title %>
+  <br>
+    <strong>Language:</strong>
+    <%= book.language %>
+  <p>
+<% end %>
+
+
+<h2>Add a book</h2>
+<%= form_for([@author, @author.books.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :language %><br>
+    <%= f.text_field :language %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'back', authors_path %>

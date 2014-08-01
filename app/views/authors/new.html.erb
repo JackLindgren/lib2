@@ -1,0 +1,18 @@
+<h1>Create a new author</h1>
+<%= form_for :author, url: authors_path do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', authors_path %>
