@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20140801030102) do
   create_table "authors", force: true do |t|
     t.string   "name"
     t.string   "country"
+    t.string   "born"
+    t.string   "died"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -23,6 +25,8 @@ ActiveRecord::Schema.define(version: 20140801030102) do
   create_table "books", force: true do |t|
     t.string   "title"
     t.string   "language"
+    t.string   "year"
+    t.string   "subject"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"

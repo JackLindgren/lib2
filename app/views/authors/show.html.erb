@@ -1,19 +1,33 @@
-<p>
-  <strong>Name:</strong>
-  <%= @author.name %>
- 
-<p>
-  <strong>Country:</strong>
-  <%= @author.country %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Country</th>
+    <th>Years</th>
+  </tr>
+  <tr>
+    <td><%= @author.name.split(",").reverse.join(" ").strip %></td>
+    <td><%= @author.country %></td>
+    <td><%= @author.born %>-<%= @author.died %></td>
+  </tr>
+</table>
 
+<strong>Name:</strong>
+<%= @author.name.split(",").reverse.join(" ").strip %><br>
+<strong>Country:</strong>
+<%= @author.country %><br>
+<strong>Years:</strong>
+<%= @author.born %>-<%= @author.died %><br>
 
 <h2>Books</h2>
-<% @author.books.each do |book| %>
+<% @author.books.order(:year).each do |book| %>
     <strong>Title:</strong>
     <%= book.title %>
   <br>
-    <strong>Language:</strong>
-    <%= book.language %>
+    <strong>Year:</strong>
+    <%= book.year %>
+  <br>
+    <strong>Subject:</strong>
+    <%= book.subject %>
   <p>
 <% end %>
 
@@ -29,8 +43,17 @@
     <%= f.text_field :language %>
   </p>
   <p>
+    <%= f.label :year %><br>
+    <%= f.text_field :year %>
+  </p>
+  <p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+  <p>
     <%= f.submit %>
   </p>
 <% end %>
 
 <%= link_to 'back', authors_path %>
+<%= link_to 'edit', edit_author_path(@author) %>

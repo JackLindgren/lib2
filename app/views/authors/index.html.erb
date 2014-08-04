@@ -1,17 +1,16 @@
 <h1>Listing authors</h1>
-
-<%= link_to 'Add new author', new_author_path %>
- 
+<%= link_to 'Add new author', new_author_path %><br>
 <table>
   <tr>
     <th>Name</th>
     <th>Country</th>
+    <th>Years</th>
   </tr>
- 
-  <% @authors.each do |author| %>
+  <% @authors.order(:name).each do |author| %>
     <tr>
-      <td><%= link_to "#{author.name}", author_path(author) %></td>
+      <td><%= link_to "#{author.name.split(",").reverse.join(" ").strip}", author_path(author) %></td>
       <td><%= author.country %></td>
+      <td><%= author.born %>-<%= author.died %></td>
     </tr>
   <% end %>
 </table>
